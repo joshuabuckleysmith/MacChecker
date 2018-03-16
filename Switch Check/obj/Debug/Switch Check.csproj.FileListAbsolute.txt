@@ -1,0 +1,15 @@
+C:\Users\josmith\source\repos\Switch Check\Switch Check\bin\Debug\Switch Check.exe.config
+C:\Users\josmith\source\repos\Switch Check\Switch Check\bin\Debug\Switch Check.exe
+C:\Users\josmith\source\repos\Switch Check\Switch Check\bin\Debug\Switch Check.pdb
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check.csprojResolveAssemblyReference.cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\MainWindow.g.cs
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\App.g.cs
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check_MarkupCompile.cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check_MarkupCompile.lref
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\MainWindow.baml
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check.g.resources
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch_Check.Properties.Resources.resources
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check.csproj.GenerateResource.Cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check.csproj.CoreCompileInputs.cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check.exe
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Debug\Switch Check.pdb
