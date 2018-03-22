@@ -1,0 +1,15 @@
+C:\Users\josmith\source\repos\Switch Check\Switch Check\bin\Release\Switch Check.exe.config
+C:\Users\josmith\source\repos\Switch Check\Switch Check\bin\Release\Switch Check.exe
+C:\Users\josmith\source\repos\Switch Check\Switch Check\bin\Release\Switch Check.pdb
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\MainWindow.g.cs
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\App.g.cs
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check_MarkupCompile.cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check_MarkupCompile.lref
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\MainWindow.baml
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check.g.resources
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch_Check.Properties.Resources.resources
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check.csproj.GenerateResource.Cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check.csproj.CoreCompileInputs.cache
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check.exe
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check.pdb
+C:\Users\josmith\source\repos\Switch Check\Switch Check\obj\Release\Switch Check.csprojResolveAssemblyReference.cache
