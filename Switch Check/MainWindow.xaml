@@ -5,316 +5,604 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Switch_Check"
         mc:Ignorable="d"
-        Title="MainWindow" Height="791" Width="973">
+        Title="Switch Port Checker" Height="869" Width="1394.5" Background="White">
     <Grid Margin="0,0,2,-21">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="142*"/>
             <ColumnDefinition Width="1391*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="MacAddressInput" FontSize="7" AcceptsReturn="True" HorizontalAlignment="Left" Height="186" Margin="47,81,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;&#xD;&#xA;Ethernet-switching table: 41 entries, 32 learned, 0 persistent entries&#xD;&#xA;  VLAN              MAC address       Type         Age Interfaces&#xD;&#xA;  CELLULAR          *                 Flood          - All-members&#xD;&#xA;  CELLULAR          2a:30:44:16:c1:d6 Learn          0 ge-0/0/0.0&#xD;&#xA;  CELLULAR          40:a6:77:2a:15:80 Learn          0 ge-0/0/1.0&#xD;&#xA;  CELLULAR-2        *                 Flood          - All-members&#xD;&#xA;  CX-INTERNET       *                 Flood          - All-members&#xD;&#xA;  CX-INTERNET       00:c1:b1:60:44:19 Learn          0 ge-0/0/3.0&#xD;&#xA;  CX-INTERNET       04:bd:88:c4:13:64 Learn          0 ge-0/0/2.0&#xD;&#xA;  CX-INTERNET       40:a6:77:2a:15:80 Learn          0 ge-0/0/1.0&#xD;&#xA;  DATA              *                 Flood          - All-members&#xD;&#xA;  DATA              00:11:26:02:6c:16 Learn          0 ge-0/0/37.0&#xD;&#xA;  DATA              00:1d:06:04:1c:c5 Learn          0 ge-0/0/36.0&#xD;&#xA;  DATA              00:30:18:ce:5f:5d Learn          0 ge-0/0/35.0&#xD;&#xA;  DATA              40:a6:77:2a:15:80 Learn          0 ge-0/0/1.0&#xD;&#xA;  DATA              50:65:f3:36:4a:e9 Learn          0 ge-0/0/29.0&#xD;&#xA;  DATA              ac:cc:8e:50:f8:77 Learn          0 ge-0/0/31.0&#xD;&#xA;  DATA              ac:cc:8e:50:f8:83 Learn          0 ge-0/0/33.0&#xD;&#xA;  DATA              ac:cc:8e:50:f8:d2 Learn          0 ge-0/0/34.0&#xD;&#xA;  DATA              ac:cc:8e:50:f9:97 Learn          0 ge-0/0/32.0&#xD;&#xA;  DATA              ac:cc:8e:50:f9:a0 Learn          0 ge-0/0/30.0&#xD;&#xA;  DSL-INTERNET      *                 Flood          - All-members&#xD;&#xA;  INTERNET          *                 Flood          - All-members&#xD;&#xA;  INTERNET          00:15:ff:bb:f7:e3 Learn          0 ge-0/0/47.0&#xD;&#xA;  INTERNET          3a:20:5b:4d:44:4d Learn       1:09 ge-0/0/47.0&#xD;&#xA;  INTERNET          40:a6:77:2a:15:80 Learn          0 ge-0/0/1.0&#xD;&#xA;  INTERNET          a0:1e:0b:04:9a:60 Learn          0 ge-0/0/46.0&#xD;&#xA;  INTERNET          f8:62:14:a4:3a:1a Learn          0 ge-0/0/2.0&#xD;&#xA;  POS               *                 Flood          - All-members&#xD;&#xA;  POS               00:1b:eb:64:cb:47 Learn          0 ge-0/0/18.0&#xD;&#xA;  POS               40:a6:77:2a:15:80 Learn          0 ge-0/0/1.0&#xD;&#xA;  POS               48:0f:cf:be:e0:25 Learn          0 ge-0/0/12.0&#xD;&#xA;  POS               64:eb:8c:f8:99:8b Learn          0 ge-0/0/25.0&#xD;&#xA;  POS               64:eb:8c:f9:fe:85 Learn          0 ge-0/0/16.0&#xD;&#xA;  POS               64:eb:8c:f9:fe:c2 Learn       1:55 ge-0/0/17.0&#xD;&#xA;  POS               64:eb:8c:fa:0f:54 Learn       3:35 ge-0/0/14.0&#xD;&#xA;  POS               c8:d3:ff:3b:3a:bb Learn          0 ge-0/0/8.0&#xD;&#xA;  POS               ec:8e:b5:d4:40:b7 Learn          0 ge-0/0/11.0&#xD;&#xA;  POS               ec:8e:b5:d4:41:81 Learn          0 ge-0/0/10.0&#xD;&#xA;  POS               ec:8e:b5:d5:2e:fc Learn          0 ge-0/0/13.0&#xD;&#xA;  SWX-MGMT          *                 Flood          - All-members&#xD;&#xA;  SWX-MGMT          40:a6:77:2a:15:80 Learn          0 ge-0/0/1.0&#xD;&#xA;  SWX-MGMT          88:a2:5e:e4:79:41 Static         - Router&#xD;&#xA;" VerticalAlignment="Top" Width="288" TextChanged="MacAddressInput_TextChanged" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="PortInput" FontSize="7" AcceptsReturn="True" HorizontalAlignment="Left" Height="337" Margin="47,310,0,0" TextWrapping="Wrap" Text="{}{master:0}&#xD;&#xA;josmith@cli.starbucks.com@gm97616&gt; show interfaces descriptions&#xD;&#xA;Interface       Admin Link Description&#xD;&#xA;ge-0/0/0        up    up   CELLULAR_ACCESS_CIRCUIT: FRO2005955688CA5&#xD;&#xA;ge-0/0/1        up    up   ROUTER_UPLINK&#xD;&#xA;ge-0/0/2        up    up   WAP_1&#xD;&#xA;ge-0/0/3        up    up   PRIMARY-ACCESS-CIRCUIT: FRO2005955683CA5&#xD;&#xA;ge-0/0/4        down  down WAP_2&#xD;&#xA;ge-0/0/5        down  down WAP_3&#xD;&#xA;ge-0/0/6        down  down DSL_Access: (NO_FRO_ID)&#xD;&#xA;ge-0/0/7        down  down CELLULAR_ACCESS_CIRCUIT_2: (NO_FRO_ID)&#xD;&#xA;ge-0/0/8        up    up   POS1&#xD;&#xA;ge-0/0/9        down  down POS2&#xD;&#xA;ge-0/0/10       up    up   POS3&#xD;&#xA;ge-0/0/11       up    up   POS4&#xD;&#xA;ge-0/0/12       up    up   POS5&#xD;&#xA;ge-0/0/13       up    up   POS6&#xD;&#xA;ge-0/0/14       up    up   POS7&#xD;&#xA;ge-0/0/15       up    down POS8&#xD;&#xA;ge-0/0/16       up    up   POS9&#xD;&#xA;ge-0/0/17       up    up   POS10&#xD;&#xA;ge-0/0/18       up    up   POS11&#xD;&#xA;ge-0/0/19       down  down POS12&#xD;&#xA;ge-0/0/20       down  down POS13&#xD;&#xA;ge-0/0/21       down  down POS14&#xD;&#xA;ge-0/0/22       down  down POS15&#xD;&#xA;ge-0/0/23       down  down POS16&#xD;&#xA;ge-0/0/24       up    up   POS17&#xD;&#xA;ge-0/0/25       up    up   POS18&#xD;&#xA;ge-0/0/26       down  down POS19&#xD;&#xA;ge-0/0/27       down  down POS20&#xD;&#xA;ge-0/0/28       up    up   DATA1&#xD;&#xA;ge-0/0/29       up    up   DATA2&#xD;&#xA;ge-0/0/30       up    up   DATA3&#xD;&#xA;ge-0/0/31       up    up   DATA4&#xD;&#xA;ge-0/0/32       up    up   DATA5&#xD;&#xA;ge-0/0/33       up    up   DATA6&#xD;&#xA;ge-0/0/34       up    up   DATA7&#xD;&#xA;ge-0/0/35       up    up   DATA8&#xD;&#xA;ge-0/0/36       up    up   DATA9&#xD;&#xA;ge-0/0/37       up    up   DATA10&#xD;&#xA;ge-0/0/38       down  down DATA11&#xD;&#xA;ge-0/0/39       down  down DATA12&#xD;&#xA;ge-0/0/40       down  down DATA13&#xD;&#xA;ge-0/0/41       down  down DATA14&#xD;&#xA;ge-0/0/42       down  down DATA15&#xD;&#xA;ge-0/0/43       down  down DATA16&#xD;&#xA;ge-0/0/44       down  down STORE_INTERNET&#xD;&#xA;ge-0/0/45       down  down LIGHTSTAT&#xD;&#xA;ge-0/0/46       up    up   STORE_INTERNET&#xD;&#xA;ge-0/0/47       up    up   STORE_INTERNET&#xD;&#xA;vlan.5          up    up   SWX-MGMT-INTERFACE&#xD;&#xA;" VerticalAlignment="Top" Width="288" TextChanged="PortInput_TextChanged" Grid.ColumnSpan="2"/>
-        <Button Content="Check!" HorizontalAlignment="Left" Margin="101,656,0,0" VerticalAlignment="Top" Width="138" Height="50" Click="Button_Click" Opacity="0.7" Grid.Column="1" Panel.ZIndex="2"/>
-        <Label x:Name="PortLabel1" FontSize="9"  Content="ge-0/0/0&#xA;" HorizontalAlignment="Left" Margin="291,10,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel2" FontSize="9"  Content="ge-0/0/1&#xA;" HorizontalAlignment="Left" Margin="291,24,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel3" FontSize="9"  Content="ge-0/0/2&#xA;" HorizontalAlignment="Left" Margin="291,38,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel4" FontSize="9"  Content="ge-0/0/3&#xA;" HorizontalAlignment="Left" Margin="291,52,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel5" FontSize="9"  Content="ge-0/0/4&#xA;" HorizontalAlignment="Left" Margin="291,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel6" FontSize="9"  Content="ge-0/0/5&#xA;" HorizontalAlignment="Left" Margin="291,82,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel7" FontSize="9"  Content="ge-0/0/6&#xA;" HorizontalAlignment="Left" Margin="291,96,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel8" FontSize="9"  Content="ge-0/0/7&#xA;" HorizontalAlignment="Left" Margin="291,110,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel9" FontSize="9"  Content="ge-0/0/8&#xA;" HorizontalAlignment="Left" Margin="291,126,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel10" FontSize="9"  Content="ge-0/0/9&#xA;" HorizontalAlignment="Left" Margin="291,140,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel11" FontSize="9"  Content="ge-0/0/10&#xA;" HorizontalAlignment="Left" Margin="291,154,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel12" FontSize="9"  Content="ge-0/0/11&#xA;" HorizontalAlignment="Left" Margin="291,168,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel13" FontSize="9"  Content="ge-0/0/12&#xA;" HorizontalAlignment="Left" Margin="291,182,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel14" FontSize="9"  Content="ge-0/0/13&#xA;" HorizontalAlignment="Left" Margin="291,198,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel15" FontSize="9"  Content="ge-0/0/14&#xA;" HorizontalAlignment="Left" Margin="291,212,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel16" FontSize="9"  Content="ge-0/0/15&#xA;" HorizontalAlignment="Left" Margin="291,226,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel17" FontSize="9"  Content="ge-0/0/16&#xA;" HorizontalAlignment="Left" Margin="291,240,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel18" FontSize="9"  Content="ge-0/0/17&#xA;" HorizontalAlignment="Left" Margin="291,256,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel19" FontSize="9"  Content="ge-0/0/18&#xA;" HorizontalAlignment="Left" Margin="291,270,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel20" FontSize="9"  Content="ge-0/0/19&#xA;" HorizontalAlignment="Left" Margin="291,284,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel21" FontSize="9"  Content="ge-0/0/20&#xA;" HorizontalAlignment="Left" Margin="291,298,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel22" FontSize="9"  Content="ge-0/0/21&#xA;" HorizontalAlignment="Left" Margin="291,312,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel23" FontSize="9"  Content="ge-0/0/22&#xA;" HorizontalAlignment="Left" Margin="291,328,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel24" FontSize="9"  Content="ge-0/0/23&#xA;" HorizontalAlignment="Left" Margin="291,342,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel25" FontSize="9"  Content="ge-0/0/24&#xA;" HorizontalAlignment="Left" Margin="291,356,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel26" FontSize="9"  Content="ge-0/0/25&#xA;" HorizontalAlignment="Left" Margin="291,370,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel27" FontSize="9"  Content="ge-0/0/26&#xA;" HorizontalAlignment="Left" Margin="291,386,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel28" FontSize="9"  Content="ge-0/0/27&#xA;" HorizontalAlignment="Left" Margin="291,400,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel29" FontSize="9"  Content="ge-0/0/28&#xA;" HorizontalAlignment="Left" Margin="291,414,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel30" FontSize="9"  Content="ge-0/0/29&#xA;" HorizontalAlignment="Left" Margin="291,428,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel31" FontSize="9"  Content="ge-0/0/30&#xA;" HorizontalAlignment="Left" Margin="291,442,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel32" FontSize="9"  Content="ge-0/0/31&#xA;" HorizontalAlignment="Left" Margin="291,458,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel33" FontSize="9"  Content="ge-0/0/32&#xA;" HorizontalAlignment="Left" Margin="291,472,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel34" FontSize="9"  Content="ge-0/0/33&#xA;" HorizontalAlignment="Left" Margin="291,486,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel35" FontSize="9"  Content="ge-0/0/34&#xA;" HorizontalAlignment="Left" Margin="291,500,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel36" FontSize="9"  Content="ge-0/0/35&#xA;" HorizontalAlignment="Left" Margin="291,516,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel37" FontSize="9"  Content="ge-0/0/36&#xA;" HorizontalAlignment="Left" Margin="291,530,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel38" FontSize="9"  Content="ge-0/0/37&#xA;" HorizontalAlignment="Left" Margin="291,544,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel39" FontSize="9"  Content="ge-0/0/38&#xA;" HorizontalAlignment="Left" Margin="291,558,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel40" FontSize="9"  Content="ge-0/0/39&#xA;" HorizontalAlignment="Left" Margin="291,572,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel41" FontSize="9"  Content="ge-0/0/40&#xA;" HorizontalAlignment="Left" Margin="291,588,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel42" FontSize="9"  Content="ge-0/0/41&#xA;" HorizontalAlignment="Left" Margin="291,602,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel43" FontSize="9"  Content="ge-0/0/42&#xA;" HorizontalAlignment="Left" Margin="291,616,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel44" FontSize="9"  Content="ge-0/0/43&#xA;" HorizontalAlignment="Left" Margin="291,630,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel45" FontSize="9"  Content="ge-0/0/44&#xA;" HorizontalAlignment="Left" Margin="291,646,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel46" FontSize="9"  Content="ge-0/0/45&#xA;" HorizontalAlignment="Left" Margin="291,660,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel47" FontSize="9"  Content="ge-0/0/46&#xA;" HorizontalAlignment="Left" Margin="291,674,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel48" FontSize="9"  Content="ge-0/0/47&#xA;" HorizontalAlignment="Left" Margin="291,688,0,0" VerticalAlignment="Top" Height="28" Width="56" Grid.Column="1"/>
-        <Label x:Name="PortLabel49" FontSize="9"  Content="ge-0/0/48&#xA;" HorizontalAlignment="Left" Margin="291,704,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1"/>
-        <Label x:Name="MacLabel1" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,10,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel2" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,24,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel3" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,38,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel4" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,52,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel5" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,68,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel6" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,82,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel7" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,96,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel8" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,110,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel9" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,126,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel10" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,140,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel11" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,154,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel12" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,168,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel13" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,182,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel14" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,198,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel15" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,212,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel16" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,226,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel17" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,240,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel18" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,256,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel19" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,270,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel20" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,284,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel21" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,298,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel22" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,312,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel23" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,328,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel24" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,342,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel25" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,356,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel26" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,370,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel27" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,386,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel28" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,400,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel29" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,414,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel30" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,428,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel31" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,442,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel32" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,458,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel33" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,472,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel34" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,486,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel35" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,500,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel36" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,516,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel37" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,530,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel38" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,544,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel39" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,558,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel40" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,572,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel41" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,588,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel42" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,602,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel43" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,616,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel44" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,630,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel45" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,646,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel46" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,660,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel47" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,674,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel48" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,688,0,0" VerticalAlignment="Top" Height="28" Width="84" Grid.Column="1"/>
-        <Label x:Name="MacLabel49" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="332,704,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel1" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,10,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel2" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,24,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel3" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,38,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel4" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,52,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel5" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,68,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel6" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,82,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel7" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,96,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel8" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,110,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel9" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,126,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel10" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,140,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel11" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,154,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel12" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,168,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel13" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,182,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel14" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,198,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel15" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,212,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel16" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,226,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel17" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,240,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel18" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,256,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel19" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,270,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel20" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,284,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel21" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,298,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel22" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,312,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel23" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,328,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel24" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,342,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel25" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,356,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel26" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,370,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel27" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,386,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel28" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,400,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel29" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,414,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel30" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,428,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel31" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,442,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel32" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,458,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel33" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,472,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel34" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,486,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel35" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,500,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel36" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,516,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel37" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,530,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel38" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,544,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel39" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,558,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel40" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,572,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel41" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,588,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel42" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,602,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel43" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,616,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel44" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,630,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel45" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,646,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel46" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,660,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel47" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,674,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel48" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,688,0,0" VerticalAlignment="Top" Height="28" Width="52" Grid.Column="1"/>
-        <Label x:Name="AdminStateLabel49" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="408,704,0,0" VerticalAlignment="Top" Height="26" Width="52" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel1" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel2" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,24,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel3" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,38,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel4" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,52,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel5" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,68,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel6" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,82,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel7" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,96,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel8" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,110,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel9" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,126,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel10" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,140,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel11" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,154,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel12" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,168,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel13" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,182,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel14" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,198,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel15" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,212,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel16" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,226,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel17" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,240,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel18" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,256,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel19" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,270,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel20" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,284,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel21" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,298,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel22" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,312,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel23" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,328,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel24" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,342,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel25" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,356,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel26" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,370,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel27" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,386,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel28" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,400,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel29" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,414,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel30" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,428,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel31" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,442,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel32" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,458,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel33" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,472,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel34" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,486,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel35" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,500,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel36" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,516,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel37" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,530,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel38" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,544,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel39" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,558,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel40" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,572,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel41" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,588,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel42" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,602,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel43" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,616,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel44" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,630,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel45" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,646,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel46" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,660,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel47" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,674,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel48" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,688,0,0" VerticalAlignment="Top" Height="28" Width="51" Grid.Column="1"/>
-        <Label x:Name="LinkStateLabel49" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="460,704,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Column="1"/>
-        <Rectangle x:Name="Highlight1" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,16,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight2" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,30,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight3" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,44,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight4" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16" Margin="289,58,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight5" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,74,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight6" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,88,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight7" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,102,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight8" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16" Margin="289,116,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight9" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14" Margin="289,132,0,0"  Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight10" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,146,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight11" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,160,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight12" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,174,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight13" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,188,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight14" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,204,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight15" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,218,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight16" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,232,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight17" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,246,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight18" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,262,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight19" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,276,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight20" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,290,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight21" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,304,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight22" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,318,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight23" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,334,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight24" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,348,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight25" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,362,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight26" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,376,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight27" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,392,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight28" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,406,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight29" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,420,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight30" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,434,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight31" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,448,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight32" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,464,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight33" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,478,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight34" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,492,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight35" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,506,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight36" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,522,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight37" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,536,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight38" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,550,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight39" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,564,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight40" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,578,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight41" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,594,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight42" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,608,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight43" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,622,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight44" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,636,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight45" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,652,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight46" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,666,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight47" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,680,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight48" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="16"  Margin="289,694,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
-        <Rectangle x:Name="Highlight49" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="289,710,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="353" Panel.ZIndex="-1"/>
+        <TextBox x:Name="PortInput" FontSize="7" AcceptsReturn="True" HorizontalAlignment="Left" Height="251" Margin="73,404,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;Ethernet-switching table: 35 entries, 28 learned, 0 persistent entries&#xD;&#xA;  VLAN              MAC address       Type         Age Interfaces&#xD;&#xA;  DATA-VLAN         *                 Flood          - All-members&#xD;&#xA;  DATA-VLAN         00:01:c0:15:00:3f Learn          0 ge-0/0/29.0&#xD;&#xA;  DATA-VLAN         00:40:8c:ed:ef:41 Learn          0 ge-0/0/30.0&#xD;&#xA;  DATA-VLAN         ac:cc:8e:0a:c4:7c Learn          0 ge-0/0/31.0&#xD;&#xA;  DATA-VLAN         ac:cc:8e:0a:c4:f2 Learn          0 ge-0/0/32.0&#xD;&#xA;  DATA-VLAN         ac:cc:8e:0a:c4:f3 Learn          0 ge-0/0/33.0&#xD;&#xA;  DATA-VLAN         ac:cc:8e:0a:c4:f8 Learn          0 ge-0/0/34.0&#xD;&#xA;  DATA-VLAN         f0:1c:2d:dc:83:08 Learn          0 ge-0/0/1.0&#xD;&#xA;  POS-VLAN          *                 Flood          - All-members&#xD;&#xA;  POS-VLAN          00:1b:eb:68:c4:d9 Learn          0 ge-0/0/18.0&#xD;&#xA;  POS-VLAN          6c:ae:8b:10:0c:dd Learn          0 ge-0/0/8.0&#xD;&#xA;  POS-VLAN          6c:ae:8b:10:16:ac Learn          0 ge-0/0/11.0&#xD;&#xA;  POS-VLAN          6c:ae:8b:10:31:2c Learn          0 ge-0/0/12.0&#xD;&#xA;  POS-VLAN          6c:ae:8b:10:65:a0 Learn          0 ge-0/0/10.0&#xD;&#xA;  POS-VLAN          b0:e8:92:fc:83:27 Learn       4:52 ge-0/0/16.0&#xD;&#xA;  POS-VLAN          b0:e8:92:fc:95:ea Learn       1:02 ge-0/0/14.0&#xD;&#xA;  POS-VLAN          c8:cb:b8:0c:45:d6 Learn          0 ge-0/0/13.0&#xD;&#xA;  POS-VLAN          f0:1c:2d:dc:83:08 Learn          0 ge-0/0/1.0&#xD;&#xA;  PRIMARY-INTERNET-VLAN *             Flood          - All-members&#xD;&#xA;  PRIMARY-INTERNET-VLAN bc:14:01:35:bf:82 Learn        0 ge-0/0/3.0&#xD;&#xA;  PRIMARY-INTERNET-VLAN f0:1c:2d:dc:83:08 Learn        0 ge-0/0/0.0&#xD;&#xA;  PUBLIC-AP-VLAN    *                 Flood          - All-members&#xD;&#xA;  PUBLIC-AP-VLAN    00:56:cd:42:50:c8 Learn       3:37 ge-0/0/2.0&#xD;&#xA;  PUBLIC-AP-VLAN    00:56:cd:47:d3:0d Learn       2:35 ge-0/0/2.0&#xD;&#xA;  PUBLIC-AP-VLAN    04:bd:88:c5:c6:c2 Learn          0 ge-0/0/2.0&#xD;&#xA;  PUBLIC-AP-VLAN    56:13:0d:6f:12:64 Learn         55 ge-0/0/2.0&#xD;&#xA;  PUBLIC-AP-VLAN    f0:1c:2d:dc:83:08 Learn          0 ge-0/0/1.0&#xD;&#xA;  SMLL-VLAN         *                 Flood          - All-members&#xD;&#xA;  SMLL-VLAN         70:5a:0f:aa:dd:6f Learn          0 ge-0/0/47.0&#xD;&#xA;  SMLL-VLAN         a0:1e:0b:03:e7:2c Learn          0 ge-0/0/46.0&#xD;&#xA;  SMLL-VLAN         a4:f1:e8:5b:42:4d Learn          0 ge-0/0/2.0&#xD;&#xA;  SMLL-VLAN         f0:1c:2d:dc:83:08 Learn          0 ge-0/0/1.0&#xD;&#xA;  SWX-MGMT-VLAN     *                 Flood          - All-members&#xD;&#xA;  SWX-MGMT-VLAN     5c:45:27:ae:8c:01 Static         - Router&#xD;&#xA;  SWX-MGMT-VLAN     f0:1c:2d:dc:83:08 Learn          0 ge-0/0/1.0&#xD;&#xA;&#xD;&#xA;{master:0}&#xD;&#xA;sbuxgnoc@BOH-EX2200-48&gt; show interfaces des&#xD;&#xA;                                           ^&#xD;&#xA;'des' is ambiguous.&#xD;&#xA;Possible completions:&#xD;&#xA;  &lt;interface-name&gt;     Name of physical or logical interface&#xD;&#xA;  descriptions         Display interface description strings&#xD;&#xA;  destination-class    Show statistics for destination class&#xD;&#xA;{master:0}&#xD;&#xA;sbuxgnoc@BOH-EX2200-48&gt; show interfaces des&#xD;&#xA;                                           ^&#xD;&#xA;'des' is ambiguous.&#xD;&#xA;Possible completions:&#xD;&#xA;  &lt;interface-name&gt;     Name of physical or logical interface&#xD;&#xA;  descriptions         Display interface description strings&#xD;&#xA;  destination-class    Show statistics for destination class&#xD;&#xA;&#xD;&#xA;{master:0}&#xD;&#xA;sbuxgnoc@BOH-EX2200-48&gt; show interfaces descriptions&#xD;&#xA;Interface       Admin Link Description&#xD;&#xA;ge-0/0/0        up    up   ROUTER PRIMARY INTERNET UPLINK&#xD;&#xA;ge-0/0/1        up    up   TRUNK to ROUTER NON-INTERNET UPLINK&#xD;&#xA;ge-0/0/2        up    up   ARUBA AP1&#xD;&#xA;ge-0/0/3        up    up   PRIMARY INTERNET ACCESS&#xD;&#xA;ge-0/0/4        up    down ARUBA AP2&#xD;&#xA;ge-0/0/5        up    down TRUNK to FOH SWITCH - Future use&#xD;&#xA;ge-0/0/6        down  down SECONDARY INTERNET ACCESS - Future use&#xD;&#xA;ge-0/0/7        down  down ARUBA AP3 - Future use&#xD;&#xA;ge-0/0/8        up    up   POS-1&#xD;&#xA;ge-0/0/9        up    down POS-2&#xD;&#xA;ge-0/0/10       up    up   POS-3&#xD;&#xA;ge-0/0/11       up    up   POS-4&#xD;&#xA;ge-0/0/12       up    up   POS-5&#xD;&#xA;ge-0/0/13       up    up   POS-6&#xD;&#xA;ge-0/0/14       up    up   POS-7&#xD;&#xA;ge-0/0/15       up    down POS-8&#xD;&#xA;ge-0/0/16       up    up   POS-9&#xD;&#xA;ge-0/0/17       up    up   POS-10&#xD;&#xA;ge-0/0/18       up    up   POS-11&#xD;&#xA;ge-0/0/19       down  down POS-12&#xD;&#xA;ge-0/0/20       down  down POS-13&#xD;&#xA;ge-0/0/21       down  down POS-14&#xD;&#xA;ge-0/0/22       down  down POS-15&#xD;&#xA;ge-0/0/23       down  down POS-16&#xD;&#xA;ge-0/0/24       up    up   POS-17&#xD;&#xA;ge-0/0/25       up    down POS-18&#xD;&#xA;ge-0/0/26       down  down POS-19&#xD;&#xA;ge-0/0/27       up    down POS-20&#xD;&#xA;ge-0/0/28       up    up   DATA-1&#xD;&#xA;ge-0/0/29       up    up   DATA-2&#xD;&#xA;ge-0/0/30       up    up   DATA-3&#xD;&#xA;ge-0/0/31       up    up   DATA-4&#xD;&#xA;ge-0/0/32       up    up   DATA-5&#xD;&#xA;ge-0/0/33       up    up   DATA-6&#xD;&#xA;ge-0/0/34       up    up   DATA-7&#xD;&#xA;ge-0/0/35       up    up   DATA-8&#xD;&#xA;ge-0/0/36       up    up   DATA-9&#xD;&#xA;ge-0/0/37       down  down DATA-10&#xD;&#xA;ge-0/0/38       down  down DATA-11&#xD;&#xA;ge-0/0/39       down  down DATA-12&#xD;&#xA;ge-0/0/40       down  down DATA-13&#xD;&#xA;ge-0/0/41       down  down DATA-14&#xD;&#xA;ge-0/0/42       down  down DATA-15&#xD;&#xA;ge-0/0/43       down  down DATA-16&#xD;&#xA;ge-0/0/44       down  down VLAN102-1&#xD;&#xA;ge-0/0/45       down  down VLAN102-2&#xD;&#xA;ge-0/0/46       up    up   VLAN102-3&#xD;&#xA;ge-0/0/47       up    up   VLAN102-4&#xD;&#xA;vlan.5          up    up   SWX-MGMT-INTERFACE&#xD;&#xA;" VerticalAlignment="Top" Width="288" TextChanged="PortInput_TextChanged" Grid.ColumnSpan="2"/>
+        <Button Content="Verify" HorizontalAlignment="Left" Margin="73,684,0,0" VerticalAlignment="Top" Width="138" Height="50" Click="Button_Click" Opacity="0.7" Panel.ZIndex="2" Grid.ColumnSpan="2"/>
+        <Label x:Name="PortLabel1" FontSize="9"  Content="ge-0/0/0&#xA;" HorizontalAlignment="Left"   Margin="266,25,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel2" FontSize="9"  Content="ge-0/0/1&#xA;" HorizontalAlignment="Left"   Margin="266,39,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel3" FontSize="9"  Content="ge-0/0/2&#xA;" HorizontalAlignment="Left"   Margin="266,53,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel4" FontSize="9"  Content="ge-0/0/3&#xA;" HorizontalAlignment="Left"   Margin="266,67,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel5" FontSize="9"  Content="ge-0/0/4&#xA;" HorizontalAlignment="Left"   Margin="266,81,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel6" FontSize="9"  Content="ge-0/0/5&#xA;" HorizontalAlignment="Left"   Margin="266,95,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel7" FontSize="9"  Content="ge-0/0/6&#xA;" HorizontalAlignment="Left"   Margin="266,109,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel8" FontSize="9"  Content="ge-0/0/7&#xA;" HorizontalAlignment="Left"   Margin="266,123,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel9" FontSize="9"  Content="ge-0/0/8&#xA;" HorizontalAlignment="Left"   Margin="266,137,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel10" FontSize="9"  Content="ge-0/0/9&#xA;" HorizontalAlignment="Left"  Margin="266,151,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel11" FontSize="9"  Content="ge-0/0/10&#xA;" HorizontalAlignment="Left" Margin="266,165,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel12" FontSize="9"  Content="ge-0/0/11&#xA;" HorizontalAlignment="Left" Margin="266,179,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel13" FontSize="9"  Content="ge-0/0/12&#xA;" HorizontalAlignment="Left" Margin="266,193,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel14" FontSize="9"  Content="ge-0/0/13&#xA;" HorizontalAlignment="Left" Margin="266,207,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel15" FontSize="9"  Content="ge-0/0/14&#xA;" HorizontalAlignment="Left" Margin="266,221,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel16" FontSize="9"  Content="ge-0/0/15&#xA;" HorizontalAlignment="Left" Margin="266,235,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel17" FontSize="9"  Content="ge-0/0/16&#xA;" HorizontalAlignment="Left" Margin="266,249,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel18" FontSize="9"  Content="ge-0/0/17&#xA;" HorizontalAlignment="Left" Margin="266,263,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel19" FontSize="9"  Content="ge-0/0/18&#xA;" HorizontalAlignment="Left" Margin="266,277,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel20" FontSize="9"  Content="ge-0/0/19&#xA;" HorizontalAlignment="Left" Margin="266,291,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel21" FontSize="9"  Content="ge-0/0/20&#xA;" HorizontalAlignment="Left" Margin="266,305,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel22" FontSize="9"  Content="ge-0/0/21&#xA;" HorizontalAlignment="Left" Margin="266,319,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel23" FontSize="9"  Content="ge-0/0/22&#xA;" HorizontalAlignment="Left" Margin="266,333,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel24" FontSize="9"  Content="ge-0/0/23&#xA;" HorizontalAlignment="Left" Margin="266,347,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel25" FontSize="9"  Content="ge-0/0/24&#xA;" HorizontalAlignment="Left" Margin="266,361,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel26" FontSize="9"  Content="ge-0/0/25&#xA;" HorizontalAlignment="Left" Margin="266,375,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel27" FontSize="9"  Content="ge-0/0/26&#xA;" HorizontalAlignment="Left" Margin="266,389,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel28" FontSize="9"  Content="ge-0/0/27&#xA;" HorizontalAlignment="Left" Margin="266,403,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel29" FontSize="9"  Content="ge-0/0/28&#xA;" HorizontalAlignment="Left" Margin="266,417,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel30" FontSize="9"  Content="ge-0/0/29&#xA;" HorizontalAlignment="Left" Margin="266,431,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel31" FontSize="9"  Content="ge-0/0/30&#xA;" HorizontalAlignment="Left" Margin="266,445,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel32" FontSize="9"  Content="ge-0/0/31&#xA;" HorizontalAlignment="Left" Margin="266,459,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel33" FontSize="9"  Content="ge-0/0/32&#xA;" HorizontalAlignment="Left" Margin="266,473,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel34" FontSize="9"  Content="ge-0/0/33&#xA;" HorizontalAlignment="Left" Margin="266,487,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel35" FontSize="9"  Content="ge-0/0/34&#xA;" HorizontalAlignment="Left" Margin="266,501,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel36" FontSize="9"  Content="ge-0/0/35&#xA;" HorizontalAlignment="Left" Margin="266,515,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel37" FontSize="9"  Content="ge-0/0/36&#xA;" HorizontalAlignment="Left" Margin="266,529,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel38" FontSize="9"  Content="ge-0/0/37&#xA;" HorizontalAlignment="Left" Margin="266,543,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel39" FontSize="9"  Content="ge-0/0/38&#xA;" HorizontalAlignment="Left" Margin="266,557,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel40" FontSize="9"  Content="ge-0/0/39&#xA;" HorizontalAlignment="Left" Margin="266,571,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel41" FontSize="9"  Content="ge-0/0/40&#xA;" HorizontalAlignment="Left" Margin="266,585,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel42" FontSize="9"  Content="ge-0/0/41&#xA;" HorizontalAlignment="Left" Margin="266,599,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel43" FontSize="9"  Content="ge-0/0/42&#xA;" HorizontalAlignment="Left" Margin="266,613,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel44" FontSize="9"  Content="ge-0/0/43&#xA;" HorizontalAlignment="Left" Margin="266,627,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel45" FontSize="9"  Content="ge-0/0/44&#xA;" HorizontalAlignment="Left" Margin="266,641,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel46" FontSize="9"  Content="ge-0/0/45&#xA;" HorizontalAlignment="Left" Margin="266,655,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel47" FontSize="9"  Content="ge-0/0/46&#xA;" HorizontalAlignment="Left" Margin="266,669,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel48" FontSize="9"  Content="ge-0/0/47&#xA;" HorizontalAlignment="Left" Margin="266,683,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="PortLabel49" FontSize="9"  Content="ge-0/0/48&#xA;" HorizontalAlignment="Left" Margin="266,697,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="MacLabel1" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,26,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel2" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,40,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel3" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,54,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel4" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,68,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel5" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,82,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel6" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,96,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel7" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,110,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel8" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,124,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel9" FontSize="9"  Content="MAC" HorizontalAlignment="Left"  Margin="516,138,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel10" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,152,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel11" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,166,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel12" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,180,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel13" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,194,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel14" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,208,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel15" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,222,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel16" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,236,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel17" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,250,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel18" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,264,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel19" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,278,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel20" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,292,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel21" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,306,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel22" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,320,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel23" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,334,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel24" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,348,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel25" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,362,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel26" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,376,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel27" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,390,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel28" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,404,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel29" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,418,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel30" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,432,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel31" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,446,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel32" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,460,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel33" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,474,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel34" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,488,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel35" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,502,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel36" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,516,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel37" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,530,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel38" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,544,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel39" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,558,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel40" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,572,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel41" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,586,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel42" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,600,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel43" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,614,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel44" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,628,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel45" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,642,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel46" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,656,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel47" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,670,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel48" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,684,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="MacLabel49" FontSize="9"  Content="MAC" HorizontalAlignment="Left" Margin="516,698,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel1" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,26,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel2" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,40,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel3" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,54,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel4" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,68,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel5" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,82,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel6" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,96,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel7" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,110,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel8" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,124,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel9" FontSize="9"  Content="Admin State"  HorizontalAlignment="Left" Margin="592,138,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel10" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,152,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel11" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,166,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel12" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,180,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel13" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,194,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel14" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,208,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel15" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,222,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel16" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,236,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel17" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,250,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel18" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,264,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel19" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,278,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel20" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,292,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel21" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,306,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel22" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,320,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel23" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,334,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel24" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,348,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel25" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,362,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel26" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,376,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel27" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,390,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel28" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,404,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel29" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,418,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel30" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,432,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel31" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,446,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel32" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,460,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel33" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,474,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel34" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,488,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel35" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,502,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel36" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,516,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel37" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,530,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel38" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,544,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel39" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,558,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel40" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,572,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel41" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,586,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel42" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,600,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel43" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,614,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel44" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,628,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel45" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,642,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel46" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,656,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel47" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,670,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel48" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,684,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="AdminStateLabel49" FontSize="9"  Content="Admin State" HorizontalAlignment="Left" Margin="592,698,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel1" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,26,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel2" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,40,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel3" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,54,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel4" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,68,0,0" VerticalAlignment="Top" Height="28" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel5" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,82,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel6" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,96,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel7" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,110,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel8" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,124,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel9" FontSize="9"  Content="Link State"  HorizontalAlignment="Left" Margin="648,138,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel10" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,152,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel11" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,166,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel12" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,180,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel13" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,194,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel14" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,208,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel15" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,222,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel16" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,236,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel17" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,250,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel18" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,264,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel19" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,278,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel20" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,292,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel21" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,306,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel22" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,320,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel23" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,334,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel24" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,348,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel25" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,362,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel26" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,376,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel27" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,390,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel28" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,404,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel29" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,418,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel30" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,432,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel31" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,446,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel32" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,460,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel33" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,474,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel34" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,488,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel35" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,502,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel36" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,516,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel37" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,530,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel38" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,544,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel39" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,558,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel40" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,572,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel41" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,586,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel42" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,600,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel43" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,614,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel44" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,628,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel45" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,642,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel46" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,656,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel47" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,670,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel48" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,684,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Label x:Name="LinkStateLabel49" FontSize="9"  Content="Link State" HorizontalAlignment="Left" Margin="648,698,0,0" VerticalAlignment="Top" Height="26" Width="50" Grid.Column="1"/>
+        <Rectangle x:Name="Highlight1" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,30,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight2" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,44,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight3" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,58,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight4" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,72,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight5" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,86,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight6" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,100,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight7" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,114,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight8" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,128,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight9" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"   Margin="251,142,0,0"  Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight10" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,156,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight11" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,170,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight12" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,184,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight13" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,198,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight14" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,212,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight15" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,226,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight16" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,240,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight17" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,254,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight18" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,268,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight19" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,282,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight20" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,296,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight21" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,310,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight22" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,324,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight23" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,338,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight24" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,352,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight25" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,366,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight26" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,380,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight27" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,394,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight28" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,408,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight29" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,422,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight30" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,436,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight31" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,450,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight32" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,464,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight33" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,478,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight34" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,492,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight35" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,506,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight36" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,520,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight37" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,534,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight38" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,548,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight39" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,562,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight40" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,576,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight41" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,590,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight42" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,604,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight43" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,618,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight44" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,632,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight45" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,646,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight46" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,660,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight47" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,674,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight48" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,688,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="Highlight49" Grid.Column="1" Fill="#FFFFFF" HorizontalAlignment="Left" Height="14"  Margin="251,702,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="-1"/>
 
-        <Label x:Name="DeviceTypeLabel1" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,10,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel2" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,24,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel3" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,38,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel4" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,52,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel5" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,68,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel6" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,82,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel7" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,96,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel8" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,110,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel9" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,126,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel10" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,140,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel11" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,154,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel12" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,168,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel13" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,182,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel14" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,198,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel15" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,212,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel16" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,226,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel17" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,240,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel18" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,256,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel19" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,270,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel20" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,284,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel21" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,298,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel22" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,312,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel23" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,328,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel24" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,342,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel25" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,356,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel26" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,370,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel27" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,386,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel28" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,400,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel29" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,414,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel30" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,428,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel31" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,442,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel32" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,458,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel33" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,472,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel34" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,486,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel35" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,500,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel36" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,516,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel37" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,530,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel38" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,544,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel39" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,558,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel40" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,572,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel41" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,588,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel42" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,602,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel43" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,616,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel44" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,630,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel45" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,646,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel46" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,660,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel47" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,674,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel48" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,688,0,0" VerticalAlignment="Top" Height="28" Width="103" Grid.Column="1"/>
-        <Label x:Name="DeviceTypeLabel49" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="502,704,0,0" VerticalAlignment="Top" Height="26" Width="103" Grid.Column="1"/>
-        <Label Content="show interfaces descriptions" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
-        <Label Content="show ethernet switching table" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="27" Grid.Column="1"/>
-        <ProgressBar x:Name="Progbar" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="101,656,0,0" VerticalAlignment="Top" Width="138"/>
+        <Label x:Name="DeviceTypeLabel1" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,26,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel2" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,40,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel3" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,54,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel4" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,68,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel5" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,82,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel6" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,96,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel7" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,110,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel8" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,124,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel9" FontSize="9"  Content="Device Type" HorizontalAlignment="Left"  Margin="696,138,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel10" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,152,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel11" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,166,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel12" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,180,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel13" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,194,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel14" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,208,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel15" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,222,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel16" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,236,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel17" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,250,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel18" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,264,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel19" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,278,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel20" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,292,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel21" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,306,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel22" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,320,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel23" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,334,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel24" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,348,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel25" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,362,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel26" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,376,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel27" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,390,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel28" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,404,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel29" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,418,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel30" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,432,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel31" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,446,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel32" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,460,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel33" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,474,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel34" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,488,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel35" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,502,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel36" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,516,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel37" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,530,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel38" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,544,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel39" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,558,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel40" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,572,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel41" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,586,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel42" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,600,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel43" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,614,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel44" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,628,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel45" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,642,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel46" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,656,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel47" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,670,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel48" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,684,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label x:Name="DeviceTypeLabel49" FontSize="9"  Content="Device Type" HorizontalAlignment="Left" Margin="696,698,0,0" VerticalAlignment="Top" Height="26" Width="114" Grid.Column="1"/>
+        <Label Content="show interfaces descriptions" HorizontalAlignment="Left" Margin="73,376,0,0" VerticalAlignment="Top" Height="28" Grid.ColumnSpan="2"/>
+        <Label Content="show ethernet switching table" HorizontalAlignment="Left" Margin="73,355,0,0" VerticalAlignment="Top" Height="27" Grid.ColumnSpan="2"/>
+        <ProgressBar x:Name="Progbar" HorizontalAlignment="Left" Height="50" Margin="73,684,0,0" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="ArpEntryBox" FontSize="8" AcceptsReturn="True" HorizontalAlignment="Left" Height="162" Margin="73,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Text="&#xD;&#xA;sbx.josmith@SBX22841XXNBF1&gt; show arp&#xD;&#xA;MAC Address       Address         Name                      Interface                                    Flags&#xD;&#xA;6c:ae:8b:10:0c:dd 10.163.98.138   10.163.98.138             vlan.100                                     none&#xD;&#xA;b0:e8:92:fc:83:27 10.163.98.148   10.163.98.148             vlan.100                                     none&#xD;&#xA;b0:e8:92:fc:95:ea 10.163.98.150   10.163.98.150             vlan.100                                     none&#xD;&#xA;64:eb:8c:f9:b5:b1 10.163.98.153   10.163.98.153             vlan.100                                     none&#xD;&#xA;6c:ae:8b:10:65:a0 10.163.98.158   10.163.98.158             vlan.100                                     none&#xD;&#xA;6c:ae:8b:10:16:ac 10.163.98.159   10.163.98.159             vlan.100                                     none&#xD;&#xA;6c:ae:8b:10:31:2c 10.163.98.160   10.163.98.160             vlan.100                                     none&#xD;&#xA;c8:cb:b8:0c:45:d6 10.163.98.161   10.163.98.161             vlan.100                                     none&#xD;&#xA;00:1b:eb:68:c4:d9 10.163.98.178   10.163.98.178             vlan.100                                     none&#xD;&#xA;bc:14:01:35:bf:82 72.143.114.105  72.143.114.105            vlan.8                                       none&#xD;&#xA;00:25:b9:06:02:f1 169.254.0.1     169.254.0.1               fe-0/0/7.0                                   none&#xD;&#xA;a4:f1:e8:5b:42:4d 172.16.1.192    172.16.1.192              vlan.102                                     none&#xD;&#xA;a0:1e:0b:03:e7:2c 172.16.1.193    172.16.1.193              vlan.102                                     none&#xD;&#xA;70:5a:0f:aa:dd:6f 172.16.1.194    172.16.1.194              vlan.102                                     none&#xD;&#xA;00:25:b9:06:02:f1 172.18.0.1      172.18.0.1                fe-0/0/7.0                                   none&#xD;&#xA;00:1d:06:04:07:df 192.168.1.11    192.168.1.11              vlan.101                                     none&#xD;&#xA;00:0b:94:20:dc:fc 192.168.1.19    192.168.1.19              vlan.101                                     none&#xD;&#xA;00:01:c0:15:00:3f 192.168.1.20    192.168.1.20              vlan.101                                     none&#xD;&#xA;04:bd:88:c5:c6:c2 192.168.2.132   192.168.2.132             vlan.9                                       none&#xD;&#xA;5c:45:27:ae:8c:01 192.168.5.2     192.168.5.2               vlan.5                                       none&#xD;&#xA;Total entries: 20&#xD;&#xA;" TextChanged="ArpEntryBox_TextChanged" Grid.ColumnSpan="2"/>
+        <Label x:Name="IPAddressLabel1" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,26,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel2" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,40,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel3" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,54,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel4" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,68,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel5" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,82,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel6" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,96,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel7" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,110,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel8" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,124,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel9" FontSize="9"  Content="IP Address" HorizontalAlignment="Left"  Margin="810,138,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel10" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,152,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel11" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,166,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel12" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,180,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel13" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,194,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel14" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,208,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel15" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,222,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel16" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,236,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel17" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,250,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel18" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,264,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel19" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,278,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel20" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,292,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel21" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,306,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel22" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,320,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel23" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,334,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel24" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,348,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel25" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,362,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel26" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,376,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel27" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,390,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel28" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,404,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel29" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,418,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel30" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,432,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel31" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,446,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel32" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,460,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel33" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,474,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel34" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,488,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel35" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,502,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel36" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,516,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel37" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,530,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel38" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,544,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel39" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,558,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel40" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,572,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel41" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,586,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel42" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,600,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel43" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,614,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel44" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,628,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel45" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,642,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel46" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,656,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel47" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,670,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel48" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,684,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+        <Label x:Name="IPAddressLabel49" FontSize="9"  Content="IP Address" HorizontalAlignment="Left" Margin="810,698,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="1"/>
+
+        <Label x:Name="IsValidLabel1" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left"  Margin="896,26,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel2" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left"  Margin="896,40,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel3" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left"  Margin="896,54,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel4" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left"  Margin="896,68,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel5" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left"  Margin="896,82,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel6" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left"  Margin="896,96,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel7" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left" Margin="896,110,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel8" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left" Margin="896,124,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel9" FontSize="9"   Content="Port Condition" HorizontalAlignment="Left" Margin="896,138,0,0" VerticalAlignment="Top" Height="26" Width="276" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel10" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,152,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel11" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,166,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel12" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,180,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel13" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,194,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel14" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,208,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel15" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,222,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel16" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,236,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel17" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,250,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel18" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,264,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel19" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,278,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel20" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,292,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel21" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,306,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel22" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,320,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel23" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,334,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel24" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,348,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel25" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,362,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel26" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,376,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel27" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,390,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel28" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,404,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel29" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,418,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel30" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,432,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel31" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,446,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel32" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,460,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel33" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,474,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel34" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,488,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel35" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,502,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel36" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,516,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel37" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,530,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel38" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,544,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel39" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,558,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel40" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,572,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel41" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,586,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel42" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,600,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel43" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,614,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel44" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,628,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel45" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,642,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel46" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,656,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel47" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,670,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel48" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,684,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+        <Label x:Name="IsValidLabel49" FontSize="9"  Content="Port Condition" HorizontalAlignment="Left" Margin="896,698,0,0" VerticalAlignment="Top" Height="26" Width="277" Grid.Column="1"/>
+
+
+        <TextBox x:Name="StoreEntryBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="71,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="StoreEntryBox_TextChanged" Text="22998" Opacity="0.7"/>
+        <Label Content="Store number" HorizontalAlignment="Left" Margin="71,22,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="Port scan" HorizontalAlignment="Left" Margin="71,72,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1" Grid.ColumnSpan="2" Opacity="0.7"/>
+        <Label Content="show arp (router)" HorizontalAlignment="Left" Margin="73,150,0,0" VerticalAlignment="Top" Height="27" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="PortScanProgress" Fill="#FFFFFF" HorizontalAlignment="Left" Height="44" Margin="71,48,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Panel.ZIndex="-1"/>
+        <TextBlock x:Name="ScanOk" Grid.Column="1" HorizontalAlignment="Left" Margin="68,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="100"/>
+        <Label Content="Step 1:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+        <Label Content="Step 2:" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top"/>
+        <Label Content="Step 4:" HorizontalAlignment="Left" Margin="10,699,0,0" VerticalAlignment="Top"/>
+
+        <RadioButton x:Name="USButton" Content="US" HorizontalAlignment="Left" Margin="73,112,0,0" VerticalAlignment="Top" IsChecked="True" Checked="USButton_Checked" GroupName="usca"/>
+        <Label Content="Step 3:" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="CAButton" Content="Canada" HorizontalAlignment="Left" Margin="73,128,0,0" VerticalAlignment="Top" GroupName="usca" Checked="CAButton_Checked" Grid.ColumnSpan="2" Height="17" Width="80"/>
+        <Label x:Name="ExpectedDevice1" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,25,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice2" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,39,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice3" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,53,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice4" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,67,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice5" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,81,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice6" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,95,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice7" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,109,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice8" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,123,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice9" FontSize="9"   Content="Expected Device" HorizontalAlignment="Left"   Margin="328,137,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice10" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left"  Margin="328,151,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice11" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,165,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice12" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,179,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice13" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,193,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice14" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,207,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice15" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,221,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice16" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,235,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice17" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,249,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice18" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,263,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice19" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,277,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice20" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,291,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice21" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,305,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice22" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,319,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice23" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,333,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice24" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,347,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice25" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,361,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice26" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,375,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice27" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,389,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice28" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,403,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice29" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,417,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice30" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,431,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice31" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,445,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice32" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,459,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice33" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,473,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice34" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,487,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice35" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,501,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice36" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,515,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice37" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,529,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice38" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,543,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice39" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,557,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice40" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,571,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice41" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,585,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice42" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,599,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice43" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,613,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice44" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,627,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice45" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,641,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice46" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,655,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice47" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,669,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice48" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,683,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Label x:Name="ExpectedDevice49" FontSize="9"  Content="Expected Device" HorizontalAlignment="Left" Margin="328,697,0,0" VerticalAlignment="Top" Height="26" Width="183" Grid.Column="1"/>
+        <Rectangle x:Name="Divider1" Grid.Column="1"  Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"   Margin="251,30,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949"  Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider2" Grid.Column="1"  Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"   Margin="251,44,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949"  Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider3" Grid.Column="1"  Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"   Margin="251,58,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949"  Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider4" Grid.Column="1"  Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"   Margin="251,72,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949"  Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider5" Grid.Column="1"  Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"   Margin="251,86,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949"  Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider6" Grid.Column="1"  Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"   Margin="251,100,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider7" Grid.Column="1"  Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"   Margin="251,114,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider8" Grid.Column="1"  Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"   Margin="251,128,0,0"   Stroke="#cccccc" VerticalAlignment="Top" Width="949" Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider9" Grid.Column="1"  Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"   Margin="251,142,0,0"  Stroke="#cccccc" VerticalAlignment="Top" Width="949"  Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider10" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,156,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider11" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,170,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider12" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,184,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider13" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,198,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider14" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,212,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider15" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,226,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider16" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,240,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider17" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,254,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider18" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,268,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider19" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,282,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider20" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,296,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider21" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,310,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider22" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,324,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider23" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,338,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider24" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,352,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider25" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,366,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider26" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,380,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider27" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,394,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider28" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,408,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider29" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,422,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider30" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,436,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider31" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,450,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider32" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,464,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider33" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,478,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider34" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,492,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider35" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,506,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider36" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,520,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider37" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,534,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider38" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,548,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider39" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,562,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider40" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,576,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider41" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,590,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider42" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,604,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider43" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,618,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider44" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,632,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider45" Grid.Column="1" Fill="#FF0068FF"  HorizontalAlignment="Left" Height="14"  Margin="251,646,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"   Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider46" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,660,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider47" Grid.Column="1" Fill="#FF0068FF"  HorizontalAlignment="Left" Height="14"  Margin="251,674,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"   Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider48" Grid.Column="1" Fill="#FFFFFF"   HorizontalAlignment="Left" Height="14"  Margin="251,688,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+        <Rectangle x:Name="Divider49" Grid.Column="1" Fill="#FF0068FF" HorizontalAlignment="Left" Height="14"  Margin="251,702,0,0" Stroke="#cccccc" VerticalAlignment="Top" Width="949"    Panel.ZIndex="1" Opacity="0.05"/>
+
 
 
     </Grid>
 </Window>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
