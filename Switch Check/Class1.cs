@@ -13,22 +13,20 @@ namespace Switch_Check
     {
         public static Dictionary<int, string> portstates = new Dictionary<int, string>()
         {
-            {1, "Port is OK" },
-            {2, "IP address is wrong" },
-            {3, "Wrong device for this port or missing mac address" },
-            {4, "Link is up down" },
-            {5, "Port is down down" },
-            {0, "Port is not OK" }
+            {1, "OK" },
+            {2, "Wrong device or missing mac" },
+            {3, "Wrong IP address" },
+            {4, "Admin down" },
+            {0, "Link down" }
         };
 
         public static Dictionary<int, Brush> portcolors = new Dictionary<int, Brush>()
         {
-            {1, Brushes.LightGreen },
-            {2, Brushes.Salmon },
-            {3, Brushes.LightSalmon},
-            {4, Brushes.Salmon },
-            {5, Brushes.LightGray },
-            {0, Brushes.LightSalmon }
+            {1, Brushes.LightGreen}, //{1, "Port is OK" },
+            {2, Brushes.LightSalmon}, //{3, "Wrong device for this port or missing mac address" },
+            {3, Brushes.LightSalmon},     //{4, "Wrong ip address for expected device" },
+            {4, Brushes.LightGray},  //{5, "Port is admin down" },
+            {0, Brushes.LightSalmon}      //{0, "Link is down" }
         };
 
         public static Dictionary<string, string> conversiondictionary = new Dictionary<string, string>()
@@ -53,109 +51,110 @@ namespace Switch_Check
             {"AXIS COMMUNICATIONS AB", "Security Camera"}
         };
 
+        public static Dictionary<int, string> p1vus = new Dictionary<int, string>()
+        { };
+
         public static Dictionary<int, string> ExpectedDeviceDictionaryCA = new Dictionary<int, string>()
             {
-            {0 , "CANADA"},
-            {1 , "Juniper Networks"},
-            {2 , "Aruba Networks"},
-            {3 , "Hitron Technologies. Inc"},
-            {4 , "None"},
-            {5 , "None"},
-            {6 , "None"},
-            {7 , "None"},
-            {8 , "Hewlett Packard"},
-            {9 , "None"},
-            {10, "Hewlett Packard"},
-            {11 , "Hewlett Packard"},
-            {12 , "Hewlett Packard"},
-            {13 , "Hewlett Packard"},
-            {14 , "Seiko Epson Corporation"},
-            {15 , "Seiko Epson Corporation"},
-            {16 , "Seiko Epson Corporation"},
-            {17 , "Seiko Epson Corporation"},
-            {18 , "DMP Electronics INC."},
-            {19 , "None"},
-            {20 , "None"},
-            {21 , "None"},
-            {22 , "None"},
-            {23 , "None"},
-            {24 , "Cup Labeler"},
-            {25 , "Cup Labeler"},
-            {26 , "None"},
-            {27 , "None"},
-            {28 , "Hewlett Packard"},
-            {29 , "Hewlett Packard"},
-            {30,  "Axis Communications AB"},
-            {31 , "Axis Communications AB"},
-            {32 , "Axis Communications AB"},
-            {33 , "Axis Communications AB"},
-            {34 , "Axis Communications AB"},
+            {0 , "Router Uplink Internet"},
+            {1 , "Router Uplink Non-Internet"},
+            {2 , "Aruba AP"},
+            {3 , "Modem"},
+            {4 , "Aruba AP2"},
+            {5 , "Front of House Switch"},
+            {6 , "Modem2"},
+            {7 , "Aruba AP3"},
+            {8 , "Back Office PC"},
+            {9 , "Unassigned"},
+            {10, "Register 1"},
+            {11 , "Register 2"},
+            {12 , "Register 3"},
+            {13 , "Register 4"},
+            {14 , "Cup Labeler 1"},
+            {15 , "Cup Labeler 2"},
+            {16 , "Cup Labeler 3"},
+            {17 , "Cup Labeler 4"},
+            {18 , "Bumpbar"},
+            {19 , "Bumpbar"},
+            {20 , "Bumpbar"},
+            {21 , "Reserve Bar Printer"},
+            {22 , "HHPOS Cradle 1"},
+            {23 , "HHPOS Cradle 1"},
+            {24 , "MOP Cup Labeler"},
+            {25 , "MOP Chit Printer"},
+            {26 , "GE DVR"},
+            {27 , "Alarm Panel"},
+            {28 , "Alarm Panel"},
+            {29 , "Genetec DVR"},
+            {30,  "IP Camera"},
+            {31 , "IP Camera"},
+            {32 , "IP Camera"},
+            {33 , "IP Camera"},
+            {34 , "IP Camera"},
             {35 , "Drive Thru Timer"},
             {36 , "Drive Thru Timer"},
             {37 , "EMS, Surveyor"},
-            {38 , "None"},
-            {39 , "None"},
-            {40 , "None"},
-            {41 , "DigiBoard"},
+            {38 , "Clover 1"},
+            {39 , "Clover 2"},
+            {40 , "Digital Menu"},
+            {41 , "Wireless Charger"},
             {42 , "None"},
             {43 , "None"},
             {44 , "None"},
             {45 , "None"},
-            {46 , "MINIX Technology Limited"},
-            {47 , "Hewlett Packard"},
-            {48 , "?"}
+            {46 , "Curio Player"},
+            {47 , "Back Office Printer"}
         };
         public static Dictionary<int, string> ExpectedDeviceDictionaryUS = new Dictionary<int, string>()
             {
-            {0 , "Juniper Networks"},
-            {1 , "Juniper Networks"},
-            {2 , "Aruba Networks"},
-            {3 , "Hitron Technologies. Inc"},
-            {4 , "None"},
-            {5 , "None"},
-            {6 , "None"},
-            {7 , "None"},
-            {8 , "Hewlett Packard"},
-            {9 , "None"},
-            {10, "Hewlett Packard"},
-            {11 , "Hewlett Packard"},
-            {12 , "Hewlett Packard"},
-            {13 , "Hewlett Packard"},
-            {14 , "Seiko Epson Corporation"},
-            {15 , "Seiko Epson Corporation"},
-            {16 , "Seiko Epson Corporation"},
-            {17 , "Seiko Epson Corporation"},
-            {18 , "DMP Electronics INC."},
-            {19 , "None"},
-            {20 , "None"},
-            {21 , "None"},
-            {22 , "None"},
-            {23 , "None"},
-            {24 , "Cup Labeler"},
-            {25 , "Cup Labeler"},
-            {26 , "None"},
+            {0 , "Primary CradlePoint"},
+            {1 , "Juniper SRX100D"},
+            {2 , "Aruba AP"},
+            {3 , "Modem"},
+            {4 , "Aruba AP2"},
+            {5 , "Front of House Switch"},
+            {6 , "Modem2"},
+            {7 , "Secondary CradlePoint"},
+            {8 , "Back Office PC"},
+            {9 , "Unassigned"},
+            {10, "Register 1"},
+            {11 , "Register 2"},
+            {12 , "Register 3"},
+            {13 , "Register 4"},
+            {14 , "Cup Labeler 1"},
+            {15 , "Cup Labeler 2"},
+            {16 , "Cup Labeler 3"},
+            {17 , "Cup Labeler 4"},
+            {18 , "Bumpbar"},
+            {19 , "Bumpbar"},
+            {20 , "Bumpbar"},
+            {21 , "Reserve Bar Printer"},
+            {22 , "HHPOS Cradle 1"},
+            {23 , "HHPOS Cradle 1"},
+            {24 , "MOP Cup Labeler"},
+            {25 , "MOP Chit Printer"},
+            {26 , "MOP Cup Labeler"},
             {27 , "None"},
-            {28 , "Hewlett Packard"},
-            {29 , "Hewlett Packard"},
-            {30,  "Axis Communications AB"},
-            {31 , "Axis Communications AB"},
-            {32 , "Axis Communications AB"},
-            {33 , "Axis Communications AB"},
-            {34 , "Axis Communications AB"},
+            {28 , "Alarm Panel"},
+            {29 , "Genetec DVR"},
+            {30,  "IP Camera"},
+            {31 , "IP Camera"},
+            {32 , "IP Camera"},
+            {33 , "IP Camera"},
+            {34 , "IP Camera"},
             {35 , "Drive Thru Timer"},
             {36 , "Drive Thru Timer"},
             {37 , "EMS, Surveyor"},
-            {38 , "None"},
-            {39 , "None"},
-            {40 , "None"},
-            {41 , "DigiBoard"},
+            {38 , "Clover 1"},
+            {39 , "Clover 2"},
+            {40 , "Digital Menu"},
+            {41 , "Wireless Charger"},
             {42 , "None"},
             {43 , "None"},
             {44 , "None"},
             {45 , "None"},
-            {46 , "MINIX Technology Limited"},
-            {47 , "Hewlett Packard"},
-            {48 , "?"}
+            {46 , "Curio Player"},
+            {47 , "Back Office Printer"}
         };
 
 
@@ -208,7 +207,6 @@ namespace Switch_Check
             {45 , "None"},
             {46 , "MINIX Technology Limited"},
             {47 , "Hewlett Packard"},
-            {48 , "?"}
         };
 
 
@@ -263,7 +261,6 @@ namespace Switch_Check
             {45 , "None"},
             {46 , "MINIX Technology Limited"},
             {47 , "Hewlett Packard"},
-            {48 , "?"}
         };
 
 
@@ -317,7 +314,6 @@ namespace Switch_Check
             {45 , "None"},
             {46 , "MINIX Technology Limited"},
             {47 , "Hewlett Packard"},
-            {48 , "?"}
         };
 
         public static Dictionary<int, string> validationdictionaryca1 = new Dictionary<int, string>()    // ===================== canada =============
@@ -330,7 +326,7 @@ namespace Switch_Check
             {5 , "None"},
             {6 , "None"},
             {7 , "None"},
-            {8 , "test"}, //{8 , "IBM Corporation"},
+            {8 , "test"}, 
             {9 , "None"},
             {10, "IBM Corporation"},
             {11 , "IBM Corporation"},
@@ -370,7 +366,6 @@ namespace Switch_Check
             {45 , "None"},
             {46 , "MINIX Technology Limited"},
             {47 , "Hewlett Packard"},
-            {48 , "?"}
         };
 
 
@@ -425,7 +420,7 @@ namespace Switch_Check
             {45, ""},
             {46, ""},
             {47, ""},
-            {48, ""},
+    
         };
 
 
@@ -479,7 +474,7 @@ namespace Switch_Check
             {45, ""},
             {46, ""},
             {47, ""},
-            {48, ""},
+      
         };
 
 
