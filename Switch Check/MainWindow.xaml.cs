@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace Switch_Check
 {
@@ -24,7 +25,7 @@ namespace Switch_Check
         string portstateinput;
         //"([0:9a:fA:F]{2}:[0:9a:fA:F]{2}:[0:9a:fA:F]{2}:[0:9a:fA:F]{2}:[0:9a:fA:F]{2}:[0:9a:fA:F]{2}|ge:0/0/\d+)";
         char[] delimiters = new char[] { '\r', '\n', ' ' };
-        
+
         public List<string> macaddresses = new List<string>();
         public List<string> portsformacaddresses = new List<string>();
         public List<string> portsfromadminupdownstate = new List<string>();
@@ -50,11 +51,19 @@ namespace Switch_Check
         string a;
         string b;
         string networkaddress = "";
-        
+        public bool windowsmall = true;
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Task taskA = Task.Factory.StartNew(() => TheMagic());
-            taskA.Wait();
+            if (windowsmall == true)
+            {
+                //ShowDisplay(); GrowWindow();
+                Task showDisplay = Task.Factory.StartNew(() => ShowDisplay());
+                Task growWindow = Task.Factory.StartNew(() => GrowWindow());
+            }
+            Task startNew = Task.Factory.StartNew(() => TheMagic());
+            startNew.Wait();
+            PortScanProgress.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => PortScanProgress.Fill = Brushes.Salmon)));
             ThreadDelegate updater = new ThreadDelegate(UpdateInterface);
             updater.BeginInvoke(null, null);
         }
@@ -74,7 +83,6 @@ namespace Switch_Check
             {
                 p.Clear();
             }
-            
             ports = Regex.Match(portstateinput, portpattern, RegexOptions.IgnoreCase | RegexOptions.Compiled, TimeSpan.FromSeconds(5));
             Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(10))));
             while (ports.Success)
@@ -109,8 +117,8 @@ namespace Switch_Check
                 macs = macs.NextMatch();
                 foreach (PortState port in PortState.PortsList)
                 {
-                if (port.Port == b)
-                    if (port.Port.Length != 0)
+                    if (port.Port == b)
+                        if (port.Port.Length != 0)
                         {
                             {
                                 port.Mac = a; // set a mac address
@@ -162,8 +170,8 @@ namespace Switch_Check
 
         async public void PortScanner()
         {
-            await PortScanProgress.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => PortScanProgress.Fill = Brushes.LightGray)));
-            await ScanOk.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ScanOk.Text = "Scan in progress...")));
+            await PortScanProgress.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => PortScanProgress.Fill = Brushes.Yellow)));
+            await ScanOk.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ScanOk.Content = "Scanning...")));
             addr = ParseInput(storenumber);
             string ipfirst3pattern = "([0-9]+\\.[0-9]+\\.[0-9]+\\.)";
             Match first3match = Regex.Match(Convert.ToString(addr), ipfirst3pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled, TimeSpan.FromSeconds(5));
@@ -198,31 +206,31 @@ namespace Switch_Check
                 i++;
             }
             await PortScanProgress.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => PortScanProgress.Fill = Brushes.LightGreen)));
-            await ScanOk.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ScanOk.Text = "Scan Complete")));
-            Thread.Sleep(1000);
+            await ScanOk.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ScanOk.Content = "Scan Complete")));
+            Thread.Sleep(2000);
             await PortScanProgress.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => PortScanProgress.Fill = Brushes.White)));
-            await ScanOk.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ScanOk.Text = "")));
+            await ScanOk.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ScanOk.Content = "")));
         }
 
         private IPAddress ParseInput(string addressinputvar)
         {
-                storenumber = addressinputvar.PadLeft(5, '0');
-                char trim = 'S';
-                storenumber = storenumber.TrimStart(trim);
-                try
-                {
-                    hostEntry = Dns.GetHostEntry("dg"+storenumber);
-                }
-                catch (System.Net.Sockets.SocketException)
-                {
-                    return addr;
-                }
-                addr = hostEntry.AddressList[0];
+            storenumber = addressinputvar.PadLeft(5, '0');
+            char trim = 'S';
+            storenumber = storenumber.TrimStart(trim);
+            try
+            {
+                hostEntry = Dns.GetHostEntry("dg" + storenumber);
+            }
+            catch (System.Net.Sockets.SocketException)
+            {
                 return addr;
+            }
+            addr = hostEntry.AddressList[0];
+            return addr;
         }
-        
+
         //#==========================================================PING!
-        
+
         private void Sendicmp(IPAddress addresstoping)
         {
             Ping pingSender = new Ping();
@@ -241,68 +249,105 @@ namespace Switch_Check
 
         async private void UpdateInterface()
         {
+            
+            foreach (Label ipbox in IpAddressList)
+            {
+                ipbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => ipbox.Content = "")));
+            }
+                foreach (Label portbox in PortBoxes)
+            {
+                portbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => portbox.Content = "")));
+            }
+                foreach (Label macbox in MacAddressBoxes)
+            {
+                macbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => macbox.Content = "")));
+            }
+                foreach (Label adminbox in AdminStateBoxes)
+            {
+                adminbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => adminbox.Content = "")));
+            }
+                foreach (Label linkbox in LinkStateBoxes)
+            {
+                linkbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => linkbox.Content = "")));
+            }
+                foreach (Label validbox in IsValidBoxes)
+            {
+                validbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => validbox.Content = "")));
+            }
+                foreach (Label devicelabel in DeviceTypeBoxes)
+            {
+                devicelabel.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => devicelabel.Content = "")));
+            }
             foreach (Rectangle rect in HighlightList)
             {
-                await rect.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
+                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
             }
+            foreach (Rectangle rect in HighlightList)
+            {
+                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.Green)));
+                Thread.Sleep(6);
+                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
+            }
+
+
             int searchindex = 0;
             foreach (Label ipbox in IpAddressList)
             {
-                await ipbox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => ipbox.Content = PortState.PortsList[searchindex].IpAddress)));
-                
+                await ipbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => ipbox.Content = PortState.PortsList[searchindex].IpAddress)));
+
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(60))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(60))));
             searchindex = 0;
             foreach (Label portbox in PortBoxes)
             {
-                await portbox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => portbox.Content = PortState.PortsList[searchindex].Port)));
+                await portbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => portbox.Content = PortState.PortsList[searchindex].Port)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(40))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(40))));
             searchindex = 0;
             foreach (Label macbox in MacAddressBoxes)
             {
-                await macbox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => macbox.Content = PortState.PortsList[searchindex].Mac)));
+                await macbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => macbox.Content = PortState.PortsList[searchindex].Mac)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(50))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(50))));
             searchindex = 0;
-            
+
             foreach (Label adminbox in AdminStateBoxes)
             {
-                await adminbox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => adminbox.Content = PortState.PortsList[searchindex].AdminState)));
+                await adminbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => adminbox.Content = PortState.PortsList[searchindex].AdminState)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(70))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(70))));
             searchindex = 0;
             foreach (Label linkbox in LinkStateBoxes)
             {
-                await linkbox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => linkbox.Content = PortState.PortsList[searchindex].LinkState)));
+                await linkbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => linkbox.Content = PortState.PortsList[searchindex].LinkState)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
             searchindex = 0;
             foreach (Label validbox in IsValidBoxes)
             {
-                await validbox.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => validbox.Content = Funks.portstates[PortState.PortsList[searchindex].CheckIsValid])));
+                await validbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => validbox.Content = Funks.portstates[PortState.PortsList[searchindex].CheckIsValid])));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
             searchindex = 0;
             foreach (Label devicelabel in DeviceTypeBoxes)
             {
-                await devicelabel.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => devicelabel.Content = PortState.PortsList[searchindex].DeviceType)));
+                await devicelabel.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => devicelabel.Content = PortState.PortsList[searchindex].DeviceType)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
             searchindex = 0;
             foreach (Rectangle rect in HighlightList)
             {
-                await rect.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => rect.Fill = Funks.portcolors[(PortState.PortsList[searchindex].CheckIsValid)])));
-                    searchindex++;
+                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Funks.portcolors[(PortState.PortsList[searchindex].CheckIsValid)])));
+                searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => UpdateProgressbar(0))));
+            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(0))));
         }
 
 
@@ -381,7 +426,7 @@ namespace Switch_Check
                 }
             }
         }
- 
+
 
 
         protected override void OnClosed(EventArgs e)
@@ -390,6 +435,215 @@ namespace Switch_Check
 
             Application.Current.Shutdown();
         }
+
+
+
+        
+
+        string arpentry;
+        private void ArpEntryBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            arpentry = ArpEntryBox.Text;
+        }
+
+        private void StoreEntryBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            storenumber = StoreEntryBox.Text;
+        }
+
+        private void PingOutput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void CAButton_Checked(object sender, RoutedEventArgs e)
+        {
+            PortState.CanadaStore = true;
+            ClearAll();
+            int i = 0;
+            foreach (Label box in ExpectedDeviceBoxes)
+            {
+                box.Content = Funks.ExpectedDeviceDictionaryCA[i];
+                i++;
+            }
+        }
+
+        private void USButton_Checked(object sender, RoutedEventArgs e)
+        {
+            PortState.CanadaStore = false;
+            ClearAll();
+            int i = 0;
+            foreach (Label box in ExpectedDeviceBoxes)
+            {
+                box.Content = Funks.ExpectedDeviceDictionaryUS[i];
+                i++;
+            }
+        }
+
+        public void ClearAll()
+        {
+            foreach (Rectangle rect in HighlightList)
+            {
+                rect.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
+            }
+            try
+            {
+                foreach (PortState p in PortState.PortsList)
+                {
+                    if (p != null)
+                    {
+                        p.Clear();
+                    }
+                }
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+        }
+
+
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Task.Factory.StartNew(() => HideDisplay());
+            Task.Factory.StartNew(() => ShrinkWindow());
+            return;
+        }
+
+        DispatcherPriority pri = DispatcherPriority.Send;
+        double frameincrementsize = 0.00000;
+        int framedelay = 10;
+        double powerfunction = 1;
+        //====================show window====================
+
+        double moveduration;
+        double startingpoint;
+        double movedistance;
+        async public void ShrinkWindow()
+        {
+            startingpoint = 420;
+            movedistance = 880;
+            moveduration = (Math.Sqrt(2 * movedistance));
+            frameincrementsize = (moveduration / framedelay);
+            double i = 0.00;
+            while (i < (0.5 * moveduration))
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (-(Math.Pow(i, 2))) + movedistance)));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+            while (i < (moveduration))
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (Math.Pow((i - moveduration), 2)))));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+
+            startingpoint = 500;
+            movedistance = 240;
+            moveduration = (Math.Sqrt(2 * movedistance));
+            frameincrementsize = (moveduration / framedelay);
+            i = 0.0;
+            while (i < (0.5 * moveduration))
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (-(Math.Pow(i, 2))) + movedistance)));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+            while (i < moveduration)
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (Math.Pow((i - moveduration), 2)))));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+            windowsmall = true;
+            return;
+        }
+
+
+        async public void GrowWindow()
+        {
+            startingpoint = 420;
+            movedistance = 880;
+            moveduration = (Math.Sqrt(2 * movedistance));
+            frameincrementsize = (moveduration / framedelay);
+            double i = 0.00;
+            while (i < (0.5 * moveduration))
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + ((Math.Pow((i), 2))))));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+            while (i < (moveduration))
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (-(Math.Pow(i- moveduration, 2)) + movedistance))));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+
+            startingpoint = 500;
+            movedistance = 240;
+            moveduration = (Math.Sqrt(2 * movedistance));
+            frameincrementsize = (moveduration / framedelay);
+            i = 0.0;
+            while (i < (0.5 * moveduration))
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + ((Math.Pow((i), 2))))));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+            while (i < moveduration)
+            {
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (-(Math.Pow(i - moveduration, 2)) + movedistance))));
+                Thread.Sleep(framedelay);
+                i = i + frameincrementsize;
+            }
+            windowsmall = false;
+            return;
+        }
+
+
+
+
+        async public void HideDisplay()
+        {
+            double i = 0.00;
+            await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.IsEnabled = false)));
+            while (i < 1)
+            {
+                await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>        Curtain1.Opacity =      (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>      HideButton.Opacity =    (((1 + Math.Cos(Math.Pow(i,powerfunction) * 3.14159)) / 2)))));
+                await HideButtonLine.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>  HideButtonLine.Opacity =(((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                Thread.Sleep(framedelay);
+                i = i + 0.05;
+            }
+        }
+        
+        async public void ShowDisplay()
+        {
+            double i = 0.00;
+            await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.IsEnabled = true)));
+            while (i < 1)
+            {
+                await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>        Curtain1.Opacity =          (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>      HideButton.Opacity =        (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                await HideButtonLine.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>  HideButtonLine.Opacity =    (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                Thread.Sleep(framedelay);
+                i = i + 0.05;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -810,69 +1064,7 @@ namespace Switch_Check
             IsValidBoxes.Add(IsValidLabel47);
             IsValidBoxes.Add(IsValidLabel48);
         }
-
-        string arpentry;
-        private void ArpEntryBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            arpentry = ArpEntryBox.Text;
-        }
-
-        private void StoreEntryBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            storenumber = StoreEntryBox.Text;
-        }
-
-        private void PingOutput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void CAButton_Checked(object sender, RoutedEventArgs e)
-        {
-            PortState.CanadaStore = true;
-            ClearAll();
-            int i = 0;
-            foreach (Label box in ExpectedDeviceBoxes)
-            {
-                box.Content = Funks.ExpectedDeviceDictionaryCA[i];
-                i++;
-            }
-        }
-
-        private void USButton_Checked(object sender, RoutedEventArgs e)
-        {
-            PortState.CanadaStore = false;
-            ClearAll();
-            int i = 0;
-            foreach (Label box in ExpectedDeviceBoxes)
-            {
-                box.Content = Funks.ExpectedDeviceDictionaryUS[i];
-                i++;
-            }
-        }
-
-        public void ClearAll()
-        {
-            foreach (Rectangle rect in HighlightList)
-            {
-                rect.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
-            }
-            try
-            {
-                foreach (PortState p in PortState.PortsList)
-                {
-                    if (p != null)
-                    {
-                        p.Clear();
-                    }
-                }
-            }
-            catch (NullReferenceException)
-            {
-
-            }
-        }
     }
-}
+    }
 
 

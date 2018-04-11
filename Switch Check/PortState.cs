@@ -149,10 +149,10 @@ namespace Switch_Check
         }
         /// ===CANADA===
        
-        private static List<string> p0c  = new List<string>() { "Juniper Networks" };
+        private static List<string> p0c  = new List<string>() { "Juniper Networks", "Cradlepoint" };
         private static List<string> p1c  = new List<string>() { "Juniper Networks" };
         private static List<string> p2c  = new List<string>() { "Aruba Networks", "Apple, Inc." };
-        private static List<string> p3c  = new List<string>() { "ARRIS Group, Inc." , "Hitron Technologies. Inc" };
+        private static List<string> p3c  = new List<string>() { "ARRIS Group, Inc.", "Hitron Technologies. Inc", "NETGEAR" };
         private static List<string> p4c  = new List<string>() { "Apple, Inc." };
         private static List<string> p5c  = new List<string>() { "none" };
         private static List<string> p6c  = new List<string>() { "none" };
@@ -173,8 +173,8 @@ namespace Switch_Check
         private static List<string> p21c = new List<string>() { "None" };
         private static List<string> p22c = new List<string>() { "None" };
         private static List<string> p23c = new List<string>() { "None" };
-        private static List<string> p24c = new List<string>() { "Cup Labeler" };
-        private static List<string> p25c = new List<string>() { "Cup Labeler" };
+        private static List<string> p24c = new List<string>() { "Cup Labeler", "Seiko Epson Corporation" };
+        private static List<string> p25c = new List<string>() { "Cup Labeler", "Seiko Epson Corporation" };
         private static List<string> p26c = new List<string>() { "None" };
         private static List<string> p27c = new List<string>() { "None" };
         private static List<string> p28c = new List<string>() { "Alarm Panel" };
@@ -199,10 +199,10 @@ namespace Switch_Check
         private static List<string> p47c = new List<string>() { "Hewlett Packard" };
         /// ===CANADA===
         /// ===USA===
-        private static List<string> p0a = new List<string>() { "Juniper Networks", "CradlePoint" };
+        private static List<string> p0a = new List<string>() { "Juniper Networks", "Cradlepoint" };
         private static List<string> p1a = new List<string>() { "Juniper Networks"};
         private static List<string> p2a = new List<string>() { "Aruba Networks", "Apple, Inc." };
-        private static List<string> p3a = new List<string>() { "ARRIS Group, Inc." , "Hitron Technologies. Inc" };
+        private static List<string> p3a = new List<string>() { "ARRIS Group, Inc." , "Hitron Technologies. Inc", "NETGEAR" };
         private static List<string> p4a = new List<string>() { "Apple, Inc."};
         private static List<string> p5a = new List<string>() { "none" };
         private static List<string> p6a = new List<string>() { "none" };
@@ -223,8 +223,8 @@ namespace Switch_Check
         private static List<string> p21a = new List<string>(){ "None" };
         private static List<string> p22a = new List<string>(){ "None" };
         private static List<string> p23a = new List<string>(){ "None" };
-        private static List<string> p24a = new List<string>(){ "Cup Labeler" };
-        private static List<string> p25a = new List<string>(){ "Cup Labeler" };
+        private static List<string> p24a = new List<string>(){ "Cup Labeler", "Seiko Epson Corporation" };
+        private static List<string> p25a = new List<string>(){ "Cup Labeler", "Seiko Epson Corporation" };
         private static List<string> p26a = new List<string>(){ "None" };
         private static List<string> p27a = new List<string>(){ "None" };
         private static List<string> p28a = new List<string>(){ "Alarm Panel" };
