@@ -13,5 +13,6 @@ namespace Switch_Check
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
