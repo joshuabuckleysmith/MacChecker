@@ -63,13 +63,11 @@ namespace Switch_Check
         public bool windowsmall = true;
 
 
-        async private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (windowsmall == true)
             {
-                Task bob = Task.Factory.StartNew(() => GrowWindow());
-                bob.Wait();
-                Task.Factory.StartNew(() => ShowDisplay());
+                Task.Factory.StartNew(() => GrowWindow());
             }
             Task startNew = Task.Factory.StartNew(() => TheMagic());
             startNew.Wait();
@@ -291,13 +289,13 @@ namespace Switch_Check
             }
             foreach (Rectangle rect in HighlightList)
             {
-                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
+                rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
             }
             foreach (Rectangle rect in HighlightList)
             {
-                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.Green)));
+                rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.Green)));
                 Thread.Sleep(6);
-                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
+                rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
             }
 
 
@@ -517,7 +515,8 @@ namespace Switch_Check
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Task.Factory.StartNew(() => HideDisplay());
+            Task h1 = Task.Factory.StartNew(() => HideDisplay());
+            h1.Wait();
             Task.Factory.StartNew(() => ShrinkWindow());
             return;
         }
@@ -533,19 +532,12 @@ namespace Switch_Check
         double movedistance;
         async private Task ShrinkWindow()
         {
-            
-            startingpoint = 405;
+            await HideDisplay();
+            startingpoint = 402;
             movedistance = 880;
             moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = (moveduration / framedelay);
+            frameincrementsize = 4*(moveduration / framedelay);
             double i = 0.00;
-            while (i < 1)
-            {
-                await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes hidden
-                Thread.Sleep(framedelay);
-                i = i + 0.05;
-            }
-            i = 0.00;
             while (i < (0.5 * moveduration))
             {
                 await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (-(Math.Pow(i, 2))) + movedistance)));
@@ -562,7 +554,7 @@ namespace Switch_Check
             startingpoint = 530;
             movedistance = 240;
             moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = (moveduration / framedelay);
+            frameincrementsize = 4 * (moveduration / framedelay);
             double j = 0.0;
             while (j < (0.5 * moveduration))
             {
@@ -576,32 +568,28 @@ namespace Switch_Check
                 Thread.Sleep(framedelay);
                 j = j + frameincrementsize;
             }
-            windowsmall = true;
+            
             i = 0.00;
             while (i < 1)
             {
                 await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes visible
                 Thread.Sleep(framedelay);
-                i = i + 0.05;
+                i = i + 0.15;
             }
+            windowsmall = true;
             return;
         }
 
 
          async private Task GrowWindow()
          {
-            startingpoint = 405;
+            await ShowDisplay();
+            startingpoint = 402;
             movedistance = 880;
             moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = (moveduration / framedelay);
+            frameincrementsize = 4 * (moveduration / framedelay);
             double i = 0.00;
 
-            while (i < 1)
-            {
-                await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes hidden
-                Thread.Sleep(framedelay);
-                i = i + 0.05;
-            }
             i = 0.00;
             while (i < (0.5 * moveduration))
             {
@@ -615,40 +603,38 @@ namespace Switch_Check
                 Thread.Sleep(framedelay);
                 i = i + frameincrementsize;
             }
-
             startingpoint = 530;
             movedistance = 240;
             moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = (moveduration / framedelay);
-            double j = 0.0;
-            
-            while (j < (0.5 * moveduration))
+            frameincrementsize = 4 * (moveduration / framedelay);
+            i = 0.0;
+            while (i < (0.5 * moveduration))
             {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + ((Math.Pow((j), 2))))));
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + ((Math.Pow((i), 2))))));
                 Thread.Sleep(framedelay);
-                j = j + frameincrementsize;
+                i = i + frameincrementsize;
             }
-            while (j <= moveduration)
+            while (i <= moveduration)
             {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (-(Math.Pow(j - moveduration, 2)) + movedistance))));
+                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (-(Math.Pow(i - moveduration, 2)) + movedistance))));
                 Thread.Sleep(framedelay);
-                j = j + frameincrementsize;
+                i = i + frameincrementsize;
             }
             i = 0.00;
             while (i < 1)
             {
-                await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Curtain1.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
-                await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Curtain1.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2))))); // make hidden
+                await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2))))); // make visible
                 await HideButtonLine.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButtonLine.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
                 Thread.Sleep(framedelay);
-                i = i + 0.05;
+                i = i + 0.15;
             }
             i = 0.00;
             while (i < 1)
             {
                 await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes visible
                 Thread.Sleep(framedelay);
-                i = i + 0.05;
+                i = i + 0.15;
             }
             windowsmall = false;
             return;
@@ -663,33 +649,30 @@ namespace Switch_Check
             Thickness minbox = new Thickness(-155, 7, 90, 494);
             Thickness minbutton = new Thickness(-169,0,0,0);
             Thickness borderrect = new Thickness(0, 36, 15, 0);
-
-            
-            await closex1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex1.Margin = xbox)));
-            await closex2.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex2.Margin = xbox)));
-            await closex2_Copy.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex2_Copy.Margin = minbox)));
-            await CloseButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => CloseButton.Margin = xbutton)));
-            await MinButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => MinButton.Margin = minbutton)));
             double i = 0.00;
             while (i < 1)
             {
                 await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes hidden
                 Thread.Sleep(framedelay);
-                i = i + 0.05;
+                i = i + 0.15;
             }
-
             i = 0.00;
+            await closex1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex1.Margin = xbox)));
+            await closex2.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex2.Margin = xbox)));
+            await closex2_Copy.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex2_Copy.Margin = minbox)));
+            await CloseButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => CloseButton.Margin = xbutton)));
+            await MinButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => MinButton.Margin = minbutton)));
             await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.IsEnabled = false)));
             while (i < 1)
             {
-                await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>        Curtain1.Opacity =      (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
+                await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>        Curtain1.Opacity =      (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));// make visible
                 await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>      HideButton.Opacity =    (((1 + Math.Cos(Math.Pow(i,powerfunction) * 3.14159)) / 2)))));
                 await HideButtonLine.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() =>  HideButtonLine.Opacity =(((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
                 Thread.Sleep(framedelay);
-                i = i + 0.05;
+                i = i + 0.15;
             }
             await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Width = 405)));
-            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Height = 494)));
+            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Height = 496)));
 
             return;
         }
@@ -697,33 +680,27 @@ namespace Switch_Check
 
         async private Task ShowDisplay()
         {
+            double i = 0.00;
+            while (i < 1)
+            {
+                await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes hidden
+                Thread.Sleep(framedelay);
+                i = i + 0.15;
+            }
+            Thread.Sleep(100);
             Thickness xbutton = new Thickness(785, 0, 0, 0);
             Thickness xbox = new Thickness(810, 5, 15, 493);
             Thickness minbox = new Thickness(720, 07, 90, 493);
             Thickness minbutton = new Thickness(706, 0, 0, 0);
             Thickness borderrect = new Thickness(0, 36, 15, 0);
-            
             await closex1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex1.Margin = xbox)));
             await closex2.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex2.Margin = xbox)));
             await closex2_Copy.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => closex2_Copy.Margin = minbox)));
             await CloseButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => CloseButton.Margin = xbutton)));
             await MinButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => MinButton.Margin = minbutton)));
-
-            double i = 0.00;
-           
-            while (i < 1)
-            {
-                await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes visible
-                Thread.Sleep(framedelay);
-                i = i + 0.05;
-            }
-            
             await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.IsEnabled = true)));
-
-
-            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Width = 1285)));
-            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Height = 735)));
-
+            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Width = 1279)));
+            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Height = 732)));
             return;
         }
 
