@@ -79,7 +79,7 @@ namespace Switch_Check
         Match macs;
         Match ports;
         Match arps;
-        string macpattern = "([0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}(?=(\\s+[A-Za-z]+\\s+[0-9]))|[a-z]e-0/0/\\d+(?=\\.))";
+        string macpattern = "([0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}(?=(\\s+[A-Za-z]+\\s+([0-9]:[0-9]+\\sge|[0-9]:[0-9]+\\sfe|[0-9]+\\sge|[0-9]+\\sfe)))|[f-z]e-0/0/\\d+(?=\\.))";
         string portpattern = "((?<!.)ge-0/0/\\d+|(?<=ge-0/0/\\d+\\s+)up|(?<=ge-0/0/\\d+\\s+)down|(?<=ge-0/0/\\d+\\s+up\\s+)up|(?<=ge-0/0/\\d+\\s+down\\s+)down|(?<=ge-0/0/\\d+\\s+up\\s+)down)";
         string ipaddresspattern = "([0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}(?= 10\\.)|(?<=[0-9a-fA-F] )10.[0-9]+.[0-9]+.[0-9]+)";
         string portnumberpattern = "((?<=ge-0/0/)[0-9]+)";
@@ -258,105 +258,99 @@ namespace Switch_Check
 
         async private void UpdateInterface()
         {
-            
+            DispatcherPriority updatepriority = DispatcherPriority.Send;
             foreach (Label ipbox in IpAddressList)
             {
-                ipbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => ipbox.Content = "")));
+                ipbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => ipbox.Content = "")));
             }
                 foreach (Label portbox in PortBoxes)
             {
-                portbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => portbox.Content = "")));
+                portbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => portbox.Content = "")));
             }
                 foreach (Label macbox in MacAddressBoxes)
             {
-                macbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => macbox.Content = "")));
+                macbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => macbox.Content = "")));
             }
                 foreach (Label adminbox in AdminStateBoxes)
             {
-                adminbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => adminbox.Content = "")));
+                adminbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => adminbox.Content = "")));
             }
                 foreach (Label linkbox in LinkStateBoxes)
             {
-                linkbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => linkbox.Content = "")));
+                linkbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => linkbox.Content = "")));
             }
                 foreach (Label validbox in IsValidBoxes)
             {
-                validbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => validbox.Content = "")));
+                validbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => validbox.Content = "")));
             }
                 foreach (Label devicelabel in DeviceTypeBoxes)
             {
-                devicelabel.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => devicelabel.Content = "")));
+                devicelabel.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => devicelabel.Content = "")));
             }
             foreach (Rectangle rect in HighlightList)
             {
-                rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
+                rect.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
             }
-            foreach (Rectangle rect in HighlightList)
-            {
-                rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.Green)));
-                Thread.Sleep(6);
-                rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Brushes.White)));
-            }
-
+            
 
             int searchindex = 0;
             foreach (Label ipbox in IpAddressList)
             {
-                await ipbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => ipbox.Content = PortState.PortsList[searchindex].IpAddress)));
+                await ipbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => ipbox.Content = PortState.PortsList[searchindex].IpAddress)));
 
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(60))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(60))));
             searchindex = 0;
             foreach (Label portbox in PortBoxes)
             {
-                await portbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => portbox.Content = PortState.PortsList[searchindex].Port)));
+                await portbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => portbox.Content = PortState.PortsList[searchindex].Port)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(40))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(40))));
             searchindex = 0;
             foreach (Label macbox in MacAddressBoxes)
             {
-                await macbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => macbox.Content = PortState.PortsList[searchindex].Mac)));
+                await macbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => macbox.Content = PortState.PortsList[searchindex].Mac)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(50))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(50))));
             searchindex = 0;
 
             foreach (Label adminbox in AdminStateBoxes)
             {
-                await adminbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => adminbox.Content = PortState.PortsList[searchindex].AdminState)));
+                await adminbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => adminbox.Content = PortState.PortsList[searchindex].AdminState)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(70))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(70))));
             searchindex = 0;
             foreach (Label linkbox in LinkStateBoxes)
             {
-                await linkbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => linkbox.Content = PortState.PortsList[searchindex].LinkState)));
+                await linkbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => linkbox.Content = PortState.PortsList[searchindex].LinkState)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
             searchindex = 0;
             foreach (Label validbox in IsValidBoxes)
             {
-                await validbox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => validbox.Content = Funks.portstates[PortState.PortsList[searchindex].CheckIsValid])));
+                await validbox.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => validbox.Content = Funks.portstates[PortState.PortsList[searchindex].CheckIsValid])));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
             searchindex = 0;
             foreach (Label devicelabel in DeviceTypeBoxes)
             {
-                await devicelabel.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => devicelabel.Content = PortState.PortsList[searchindex].DeviceType)));
+                await devicelabel.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => devicelabel.Content = PortState.PortsList[searchindex].DeviceType)));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(80))));
             searchindex = 0;
             foreach (Rectangle rect in HighlightList)
             {
-                await rect.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => rect.Fill = Funks.portcolors[(PortState.PortsList[searchindex].CheckIsValid)])));
+                await rect.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => rect.Fill = Funks.portcolors[(PortState.PortsList[searchindex].CheckIsValid)])));
                 searchindex++;
             }
-            await Progbar.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ThreadDelegate(new Action(() => UpdateProgressbar(0))));
+            await Progbar.Dispatcher.BeginInvoke(updatepriority, new ThreadDelegate(new Action(() => UpdateProgressbar(0))));
         }
 
 
@@ -533,48 +527,20 @@ namespace Switch_Check
         async private Task ShrinkWindow()
         {
             await HideDisplay();
-            startingpoint = 402;
+            
+            startingpoint = 400;
             movedistance = 880;
-            moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = 4*(moveduration / framedelay);
-            double i = 0.00;
-            while (i < (0.5 * moveduration))
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (-(Math.Pow(i, 2))) + movedistance)));
-                Thread.Sleep(framedelay);
-                i = i + frameincrementsize;
-            }
-            while (i <= (moveduration))
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (Math.Pow((i - moveduration), 2)))));
-                Thread.Sleep(framedelay);
-                i = i + frameincrementsize;
-            }
+            await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint)));
 
             startingpoint = 530;
             movedistance = 240;
-            moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = 4 * (moveduration / framedelay);
-            double j = 0.0;
-            while (j < (0.5 * moveduration))
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (-(Math.Pow(j, 2))) + movedistance)));
-                Thread.Sleep(framedelay);
-                j = j + frameincrementsize;
-            }
-            while (j <= moveduration)
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (Math.Pow((j - moveduration), 2)))));
-                Thread.Sleep(framedelay);
-                j = j + frameincrementsize;
-            }
-            
-            i = 0.00;
-            while (i < 1)
+            await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint)));
+            double i = 0.00;
+            while (i <= 1)
             {
                 await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes visible
                 Thread.Sleep(framedelay);
-                i = i + 0.15;
+                i = i + 0.25;
             }
             windowsmall = true;
             return;
@@ -586,55 +552,26 @@ namespace Switch_Check
             await ShowDisplay();
             startingpoint = 402;
             movedistance = 880;
-            moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = 4 * (moveduration / framedelay);
+            
             double i = 0.00;
-
-            i = 0.00;
-            while (i < (0.5 * moveduration))
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + ((Math.Pow((i), 2))))));
-                Thread.Sleep(framedelay);
-                i = i + frameincrementsize;
-            }
-            while (i <= (moveduration))
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + (-(Math.Pow(i- moveduration, 2)) + movedistance))));
-                Thread.Sleep(framedelay);
-                i = i + frameincrementsize;
-            }
+            await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Width = startingpoint + movedistance)));
             startingpoint = 530;
             movedistance = 240;
-            moveduration = (Math.Sqrt(2 * movedistance));
-            frameincrementsize = 4 * (moveduration / framedelay);
-            i = 0.0;
-            while (i < (0.5 * moveduration))
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + ((Math.Pow((i), 2))))));
-                Thread.Sleep(framedelay);
-                i = i + frameincrementsize;
-            }
-            while (i <= moveduration)
-            {
-                await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + (-(Math.Pow(i - moveduration, 2)) + movedistance))));
-                Thread.Sleep(framedelay);
-                i = i + frameincrementsize;
-            }
-            i = 0.00;
-            while (i < 1)
+            await Application.Current.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Application.Current.MainWindow.Height = startingpoint + movedistance)));
+            while (i <= 1)
             {
                 await Curtain1.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => Curtain1.Opacity = (((1 + Math.Cos(Math.Pow(i, powerfunction) * 3.14159)) / 2))))); // make hidden
                 await HideButton.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButton.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2))))); // make visible
                 await HideButtonLine.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => HideButtonLine.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));
                 Thread.Sleep(framedelay);
-                i = i + 0.15;
+                i = i + 0.25;
             }
             i = 0.00;
-            while (i < 1)
+            while (i <= 1)
             {
                 await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Opacity = (((1 + Math.Cos(3.14159 + Math.Pow(i, powerfunction) * 3.14159)) / 2)))));//makes visible
                 Thread.Sleep(framedelay);
-                i = i + 0.15;
+                i = i + 0.25;
             }
             windowsmall = false;
             return;
@@ -671,8 +608,8 @@ namespace Switch_Check
                 Thread.Sleep(framedelay);
                 i = i + 0.15;
             }
-            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Width = 405)));
-            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Height = 496)));
+            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Width = 400)));
+            await BorderRectangle.Dispatcher.BeginInvoke(pri, new ThreadDelegate(new Action(() => BorderRectangle.Height = 493)));
 
             return;
         }
